@@ -53,10 +53,10 @@ echo Working Directory: ${DIR_CTFD}
 
 # Catching Domain Name
 echo 
-echo Insert CTFd domain address (example.com):
+echo "Insert CTFd domain address (example.com):"
 read domainctfd
 echo 
-echo Insert valid email (example@example.com):
+echo "Insert valid email (example@example.com):"
 read domainemail
 
 #Create Certificates
