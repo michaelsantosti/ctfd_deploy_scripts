@@ -58,7 +58,7 @@ sudo apt-get update -y
 sudo apt-get install certbot -y
 
 #Create Certificates
-sudo certbot certonly -n --standalone --agree-tos -d $domainctfd  -email $domainemail
+sudo certbot certonly -n --standalone --agree-tos -d $domainctfd  --email $domainemail
 
 # Copy config files
 sudo cp ./setupfiles/* ${DIR_CTFD}/
