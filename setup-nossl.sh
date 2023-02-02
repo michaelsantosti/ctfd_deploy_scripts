@@ -20,6 +20,7 @@ echo Working Directory: ${DIR_CTFD}
 sudo git clone --single-branch https://github.com/CTFd/CTFd.git CTFd
 
 #Download Themes
+sudo git clone https://github.com/0xdevsachin/CTFD-crimson-theme.git CTFd/CTFd/themes/crimson
 sudo git clone https://github.com/hmrserver/CTFd-theme-pixo.git CTFd/CTFd/themes/pixo
 sudo git clone https://github.com/0xdevsachin/CTFD-odin-theme.git CTFd/CTFd/themes/odin
 sudo git clone https://github.com/iver-ics/CTFd-xmas-theme.git CTFd/CTFd/themes/xmas
