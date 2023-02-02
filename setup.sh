@@ -25,6 +25,9 @@ sudo certbot certonly -n --standalone --agree-tos -d $domainctfd
 # Copy config files
 cp ./setupfiles/* .
 
+#Create Certificates Directory
+sudo mkdir -p .data/certbot/conf/live/$domainctfd/
+
 #Copy Certificates
 sudo cp /etc/letsencrypt/live/$domainctfd/fullchain.pem .data/certbot/conf/live/$domainctfd/fullchain.pem
 sudo cp /etc/letsencrypt/live/$domainctfd/privkey.pem .data/certbot/conf/live/$domainctfd/privkey.pem
