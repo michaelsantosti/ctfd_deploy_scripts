@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#############################
+##                         ##
+#   CTFd Docker CertRenew   #
+#      Michael Santosti     #
+##                         ##
+#############################
+
 #Get Certificate Expiration Date
 CertEx=`openssl x509 -in /etc/letsencrypt/live/CTFD_DOMAIN_ADDR/fullchain.pem -inform PEM -noout -enddate`
 

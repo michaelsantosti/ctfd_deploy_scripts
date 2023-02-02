@@ -43,6 +43,7 @@ cp cron_certdocker /etc/cron.d/certbot
 #Default Permissions
 sudo chown -R 755 .
 sudo chown -R www-data:www-data .
+sudo chmod +x cert-renew.sh
 
 #Compose Docker
 sudo docker-compose -f docker-compose.yml -f docker-compose-production.yml up -d
