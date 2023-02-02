@@ -37,14 +37,11 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo usermod -aG docker ubuntu
 
 #Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 #Install Certbot
-sudo apt-get update -y
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update -y
 sudo apt-get install certbot -y
 
@@ -53,17 +50,21 @@ DIR_CTFD=${DIR_WORK}/CTFd
 clear
 echo 
 echo Working Directory: ${DIR_CTFD}
-echo 
 
 # Catching Domain Name
-echo Insira o dominio do CTFd:
+echo 
+echo Insert CTFd domain address (example.com):
 read domainctfd
+echo 
+echo Insert valid email (example@example.com):
+read domainemail
 
 #Create Certificates
-sudo certbot certonly -n --standalone --agree-tos -d $domainctfd 
+sudo certbot certonly -n --standalone --agree-tos -d $domainctfd  -email $domainemail
 
 # Copy config files
-cp ./setupfiles/* ${DIR_CTFD}/
+sudo chmod 777 CTFd
+sudo cp ./setupfiles/* ${DIR_CTFD}/
 
 #Create Certificates Directory
 sudo mkdir -p ${DIR_CTFD}/.data/certbot/conf/live/$domainctfd/
@@ -81,9 +82,9 @@ sudo sed -i 's|WORKDIR|'"$DIR_NAME"'|g' ${DIR_CTFD}/cron_certdocker
 cp ${DIR_CTFD}/cron_certdocker /etc/cron.d/certbot  
 
 #Default Permissions
-sudo chown -R 755 cd ${DIR_CTFD}
-sudo chown -R www-data:www-data cd ${DIR_CTFD}
-sudo chmod +x cd ${DIR_CTFD}/cert-renew.sh
+sudo chown -R 755 ${DIR_CTFD}
+sudo chown -R www-data:www-data ${DIR_CTFD}
+sudo chmod +x ${DIR_CTFD}/cert-renew.sh
 
 #Compose Docker
 cd ${DIR_CTFD}
