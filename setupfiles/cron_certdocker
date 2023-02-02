@@ -14,4 +14,4 @@
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-0 */12 * * * root WORKDIR/cert_renew.sh >> WORKDIR/cert_renew.log 2>&1
+0 */12 * * * root WORKDIR/cert-renew.sh >> WORKDIR/cert-renew.log 2>&1
