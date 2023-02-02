@@ -7,13 +7,25 @@
 ##                         ##
 #############################
 
-
-
 #Set Working Directory
 DIR_WORK="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+# Bind a Work Directory
+DIR_CTFD=${DIR_WORK}/CTFd
+clear
+echo 
+echo Working Directory: ${DIR_CTFD}
+
+# Catching Domain Name
+echo 
+echo "Insert CTFd domain address (example.com):"
+read domainctfd
+echo 
+echo "Insert valid email (example@example.com):"
+read domainemail
+
 #Download CTFd
-git clone --single-branch https://github.com/CTFd/CTFd.git CTFd
+sudo git clone --single-branch https://github.com/CTFd/CTFd.git CTFd
 
 #Install Requirements
 sudo apt-get update -y
@@ -45,25 +57,10 @@ docker-compose --version
 sudo apt-get update -y
 sudo apt-get install certbot -y
 
-# Bind a Work Directory
-DIR_CTFD=${DIR_WORK}/CTFd
-clear
-echo 
-echo Working Directory: ${DIR_CTFD}
-
-# Catching Domain Name
-echo 
-echo "Insert CTFd domain address (example.com):"
-read domainctfd
-echo 
-echo "Insert valid email (example@example.com):"
-read domainemail
-
 #Create Certificates
 sudo certbot certonly -n --standalone --agree-tos -d $domainctfd  -email $domainemail
 
 # Copy config files
-sudo chmod 777 CTFd
 sudo cp ./setupfiles/* ${DIR_CTFD}/
 
 #Create Certificates Directory
@@ -79,7 +76,7 @@ sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/cert-renew.sh
 
 #Create cron to docker certificate renew
 sudo sed -i 's|WORKDIR|'"$DIR_NAME"'|g' ${DIR_CTFD}/cron_certdocker
-cp ${DIR_CTFD}/cron_certdocker /etc/cron.d/certbot  
+sudo cp ${DIR_CTFD}/cron_certdocker /etc/cron.d/certbot  
 
 #Default Permissions
 sudo chown -R 755 ${DIR_CTFD}
