@@ -84,7 +84,7 @@ sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/nginx.conf
 sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/cert-renew.sh
 
 #Create cron to docker certificate renew
-sudo sed -i 's|WORKDIR|'"$DIR_NAME"'|g' ${DIR_CTFD}/cron_certdocker
+sudo sed -i 's|WORKDIR|'"$DIR_CTFD"'|g' ${DIR_CTFD}/cron_certdocker
 sudo cp ${DIR_CTFD}/cron_certdocker /etc/cron.d/certbot  
 
 #Default Permissions
