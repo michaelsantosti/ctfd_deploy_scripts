@@ -39,4 +39,4 @@ sudo chown -R 755 ${DIR_CTFD}
 sudo chown -R www-data:www-data ${DIR_CTFD}
 
 #Compose Docker
-sudo docker-compose -f docker-compose.yml -f docker-compose-production.yml up -d
+sudo docker-compose -f docker-compose.yml -f docker-compose-homol.yml up -d
