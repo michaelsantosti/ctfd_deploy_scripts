@@ -1,5 +1,5 @@
 # Welcome to CTFd Deploy Script 👋
-![Version](https://img.shields.io/badge/version-1.1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.5-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: michaelsantosti](https://img.shields.io/twitter/follow/michaelsantosti.svg?style=social)](https://twitter.com/michaelsantosti)
 
@@ -13,7 +13,7 @@
  =====================\/=====\/=====\/================\/=======================
                                CTFd Deploy Script
  ==============================================================================
-   Date............ 05/14/2023              Version....... V1.5
+   Date............ 02/01/2023              Version....... V1.5
    By.............. Michael Santosti        Target........ CTFd
  ==============================================================================
 
