@@ -1,5 +1,5 @@
 #! /bin/sh
-
+clear
 cat <<EOF
 
                 _________              __                  __  .__
@@ -10,7 +10,7 @@ cat <<EOF
  =====================\/=====\/=====\/================\/=======================
                                CTFd Deploy Script
  ==============================================================================
-   Date............ 05/14/2023              Version....... V1.5-NOSSL
+   Date............ 02/01/2023              Version....... V1.5-NOSSL
    By.............. Michael Santosti        Target........ CTFd
  ==============================================================================
 
@@ -21,7 +21,6 @@ DIR_WORK="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Bind a Work Directory
 DIR_CTFD=${DIR_WORK}/CTFd
-clear
 echo 
 echo Working Directory: ${DIR_CTFD}
 
@@ -64,7 +63,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 # Copy config files
-sudo cp ./setupfiles/* ${DIR_CTFD}/
+sudo cp -r ./setupfiles/* ${DIR_CTFD}/
 
 #Default Permissions
 sudo chown -R 755 ${DIR_CTFD}
