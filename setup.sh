@@ -99,7 +99,6 @@ sudo cp ${DIR_CTFD}/hooks/ctfd_post.sh /etc/letsencrypt/renewal-hooks/post/ctfd_
 #Default Permissions
 sudo chown -R 755 ${DIR_CTFD}
 sudo chown -R www-data:www-data ${DIR_CTFD}
-sudo chmod +x ${DIR_CTFD}/cert-renew.sh
 
 #Compose Docker
 cd ${DIR_CTFD}
