@@ -90,11 +90,12 @@ sudo cp /etc/letsencrypt/live/$domainctfd/privkey.pem ${DIR_CTFD}/.data/certbot/
 
 #Add Domain to necessary files
 sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/nginx.conf
-sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/cert-renew.sh
+sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/hooks/ctfd_pre.sh
+sudo sed -i 's|CTFD_DOMAIN_ADDR|'"$domainctfd"'|g' ${DIR_CTFD}/hooks/ctfd_post.sh
 
-#Create cron to docker certificate renew
-sudo sed -i 's|WORKDIR|'"$DIR_CTFD"'|g' ${DIR_CTFD}/cron_certdocker
-sudo cp ${DIR_CTFD}/cron_certdocker /etc/cron.d/certbot  
+#Import hooks to the certbot renew
+sudo cp ${DIR_CTFD}/hooks/ctfd_pre.sh /etc/letsencrypt/renewal-hooks/pre/ctfd_pre.sh
+sudo cp ${DIR_CTFD}/hooks/ctfd_post.sh /etc/letsencrypt/renewal-hooks/post/ctfd_post.sh
 
 #Default Permissions
 sudo chown -R 755 ${DIR_CTFD}
